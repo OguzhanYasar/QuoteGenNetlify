@@ -34,8 +34,12 @@
    };
 
    const removeItem = async (id) => {
-      await deleteItem(id);
-      fetchItems(); // Fetch items after deleting an item
+      const confirmation = window.confirm("Are you sure you want to delete this item?");
+
+      if (confirmation) {
+         await deleteItem(id);
+         fetchItems(); // Fetch items after deleting an item
+      }
    };
 
    defineProps({
